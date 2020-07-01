@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <m-header></m-header>
+    <tab></tab>
+    <keep-alive>
+    <router-view></router-view>
+    </keep-alive>
+    <player></player>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MHeader from 'components/m-header/m-header'
+import Tab from 'components/tab/tab'
+import Player from 'components/player/player'
+import {getBaidu} from "./api/song";
+import {getMusicList} from "./api/rank";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MHeader,
+    Tab,
+    Player
+  },
+  mounted () {
+    this.$store.dispatch('_getRecommend')
+    this.$store.dispatch('_getDiscList')
+/*    getBaidu()*/
+/*    getMusicList(4)*/
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus" rel="stylesheet/stylus" scoped>
+
 </style>
