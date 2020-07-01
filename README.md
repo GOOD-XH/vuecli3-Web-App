@@ -1,5 +1,5 @@
 # vue-music
-
+学习ustbhuangyi老师 开发企业级移动端音乐App
 ## Project setup
 ```
 npm install
